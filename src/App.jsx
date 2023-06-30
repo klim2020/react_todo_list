@@ -5,7 +5,11 @@ import AddForm from "./components/Forms/AddForm";
 import TaskList from "./components/Tasks/TasksList";
 import FilterForm from "./components/Forms/FilterForm";
 import Footer from "./components/Footer";
+import data from "./service/listProvider";
+import { useState } from "react";
+
 function App() {
+  const [todoLists, changeTodoList] = useState(data);
   return (
     <>
       <Header />
