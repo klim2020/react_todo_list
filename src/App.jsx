@@ -6,16 +6,19 @@ import TaskList from "./components/Tasks/TasksList";
 import FilterForm from "./components/Forms/FilterForm";
 import Footer from "./components/Footer";
 import data from "./service/listProvider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [todoLists, changeTodoList] = useState(data);
+  useEffect(() => {
+    console.log(todoLists);
+  });
   return (
     <>
       <Header />
       <div className="body mx-auto">
         <AddForm />
-        <TaskList name="" description="" />
+        <TaskList todoLists={todoLists} onListChange={changeTodoList} />
         <FilterForm />
       </div>
 

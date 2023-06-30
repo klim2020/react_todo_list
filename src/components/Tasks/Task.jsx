@@ -4,9 +4,10 @@ import { useState } from "react";
 Task.propTypes = {
   task: PropTypes.object.isRequired,
   thekey: PropTypes.number.isRequired,
+  onListChange: PropTypes.func.isRequired,
 };
 
-export default function Task({ task, thekey }) {
+export default function Task({ task, thekey, onListChange }) {
   const [opened, setOpened] = useState(true);
   const [completed, setCompleted] = useState(task.done);
 
@@ -23,6 +24,14 @@ export default function Task({ task, thekey }) {
             className="toggle toggle-success task-checker"
             onChange={() => {
               setCompleted((current) => !current);
+              onListChange((current) => {
+                return current.map((element, index) => {
+                  if (index != thekey) {
+                    element.done = !element.done;
+                  }
+                  return element;
+                });
+              });
             }}
             checked={completed}
           />
