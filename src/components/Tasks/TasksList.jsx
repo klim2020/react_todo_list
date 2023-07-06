@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 
 TaskList.propTypes = {
   todoLists: PropTypes.array.isRequired,
-  onListChange: PropTypes.func.isRequired,
+  onDeleteItem: PropTypes.func.isRequired,
+  onToggleStatus: PropTypes.func.isRequired,
 };
-export default function TaskList({ todoLists, onListChange }) {
+export default function TaskList({ todoLists, onDeleteItem, onToggleStatus }) {
   return (
     <div className="flex flex-row flex-wrap">
       {todoLists.map((item, key) => {
@@ -14,7 +15,8 @@ export default function TaskList({ todoLists, onListChange }) {
             key={key}
             thekey={key}
             task={item}
-            onListChange={onListChange}
+            onDeleteItem={onDeleteItem}
+            onToggleStatus={onToggleStatus}
           />
         );
       })}
