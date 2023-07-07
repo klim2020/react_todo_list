@@ -40,7 +40,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="body mx-auto">
+      <div className="body mx-auto h-full flex flex-col justify-between">
         <AddForm onAddTask={onAddTask} />
         <TaskList
           todoLists={todoLists}
@@ -50,7 +50,7 @@ function App() {
         <FilterForm />
       </div>
 
-      <Footer />
+      <Footer todoLists={todoLists} />
     </>
   );
 }

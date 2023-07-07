@@ -1,6 +1,6 @@
 export default function FilterForm() {
   return (
-    <div className="rounded bg-base-200 my-4 flex-1 p-4 mt-auto">
+    <div className="rounded bg-base-200 p-4">
       <h2 className="text-center my-2  text-primary-content font-bold">
         Filter values
       </h2>
