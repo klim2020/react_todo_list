@@ -33,6 +33,41 @@ function App() {
     );
   }
 
+  function onFilterBy(filterBy) {
+    if (filterBy === "items") {
+      console.log("items");
+      changeTodoList((c) => {
+        let qq = [...c].sort((a, b) => {
+          if (a.items.length < b.items.length) {
+            return 1;
+          }
+          if (a.items.length > b.items.length) {
+            return -1;
+          }
+          // a должно быть равным b
+          return 0;
+        });
+        console.log(qq);
+        return qq;
+      });
+    }
+    if (filterBy === "name") {
+      console.log("name");
+      changeTodoList((c) => {
+        return [...c].sort((a, b) => {
+          if (a.title > b.title) {
+            return 1;
+          }
+          if (a.title < b.title) {
+            return -1;
+          }
+          // a должно быть равным b
+          return 0;
+        });
+      });
+    }
+  }
+
   useEffect(() => {
     //TODO REMOVE DEBUG
     //console.log(todoLists);
@@ -47,7 +82,7 @@ function App() {
           onDeleteItem={onDeleteTask}
           onToggleStatus={onToggleStatus}
         />
-        <FilterForm />
+        <FilterForm onFilterBy={onFilterBy} />
       </div>
 
       <Footer todoLists={todoLists} />

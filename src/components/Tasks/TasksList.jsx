@@ -8,7 +8,7 @@ TaskList.propTypes = {
 };
 export default function TaskList({ todoLists, onDeleteItem, onToggleStatus }) {
   return (
-    <div className="flex flex-row flex-wrap">
+    <div className="flex flex-row flex-wrap h-full">
       {todoLists.map((item, key) => {
         return (
           <Task
